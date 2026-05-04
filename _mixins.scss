@@ -1,0 +1,109 @@
+// =============================================================
+// _mixins.scss — Clases de Tenis de Mesa · Jose Tapia
+// =============================================================
+
+@use 'variables' as *;
+
+// ——— Media Queries (Mobile First) ———
+@mixin respond-to($bp) {
+  @if $bp == 'sm'  { @media (min-width: $bp-sm)  { @content; } }
+  @if $bp == 'md'  { @media (min-width: $bp-md)  { @content; } }
+  @if $bp == 'lg'  { @media (min-width: $bp-lg)  { @content; } }
+  @if $bp == 'xl'  { @media (min-width: $bp-xl)  { @content; } }
+  @if $bp == 'xxl' { @media (min-width: $bp-xxl) { @content; } }
+}
+
+// ——— Flexbox Helpers ———
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flex-col($gap: 0) {
+  display: flex;
+  flex-direction: column;
+  @if $gap != 0 { gap: $gap; }
+}
+
+// ——— Tipografía ———
+@mixin heading-style($size, $weight: $font-weight-black) {
+  font-family: $font-display;
+  font-size: $size;
+  font-weight: $weight;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+// ——— Pseudo-elemento decorativo ———
+@mixin accent-bar($color: $color-accent, $width: 60px, $height: 4px) {
+  &::after {
+    content: '';
+    display: block;
+    width: $width;
+    height: $height;
+    background: $color;
+    border-radius: 2px;
+    margin-top: 0.6rem;
+  }
+}
+
+// ——— Card base ———
+@mixin card-base {
+  background: $color-white;
+  border-radius: $border-radius-md;
+  overflow: hidden;
+  box-shadow: $shadow-soft;
+  transition: $transition-normal;
+}
+
+// ——— Degradado de fondo ———
+@mixin gradient-bg($from, $to, $deg: 135deg) {
+  background: linear-gradient($deg, $from, $to);
+}
+
+// ——— Texto con color de acento clip ———
+@mixin text-gradient($from: $color-accent, $to: $color-gold) {
+  background: linear-gradient(90deg, $from, $to);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// ——— Overlay oscuro ———
+@mixin dark-overlay($opacity: 0.65) {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba($color-dark, $opacity);
+    z-index: 1;
+  }
+  > * { position: relative; z-index: 2; }
+}
+
+// ——— Botón base ———
+@mixin btn-base {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  border: none;
+  border-radius: $border-radius-pill;
+  font-family: $font-display;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-lg;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: $transition-normal;
+}

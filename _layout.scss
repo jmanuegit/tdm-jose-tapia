@@ -1,0 +1,238 @@
+// =============================================================
+// _layout.scss — Header, Nav, Footer, Hero
+// =============================================================
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ——— HEADER / NAVBAR ———
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: $z-nav;
+  background: $color-primary;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+
+  .navbar-brand {
+    @include heading-style(1.5rem);
+    color: $color-white !important;
+    letter-spacing: 0.03em;
+
+    span.brand-accent {
+      color: $color-accent;
+    }
+  }
+
+  .nav-link {
+    font-family: $font-display;
+    font-size: 1.05rem;
+    font-weight: $font-weight-semibold;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba($color-white, 0.82) !important;
+    padding: 0.5rem 0.9rem !important;
+    position: relative;
+    transition: $transition-fast;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0.9rem;
+      right: 0.9rem;
+      height: 2px;
+      background: $color-accent;
+      transform: scaleX(0);
+      transition: transform 0.25s ease;
+      transform-origin: left;
+    }
+
+    &:hover,
+    &.active {
+      color: $color-white !important;
+      &::after { transform: scaleX(1); }
+    }
+  }
+
+  .navbar-toggler {
+    border-color: rgba($color-white, 0.4);
+    &-icon { filter: invert(1); }
+  }
+}
+
+// ——— HERO SECTION ———
+.hero {
+  @include gradient-bg($color-dark, $color-primary);
+  min-height: 92vh;
+  @include flex-center;
+  flex-direction: column;
+  text-align: center;
+  padding: $spacing-lg $spacing-sm;
+  position: relative;
+  overflow: hidden;
+
+  // Diagonal bottom divider
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: $color-light;
+    clip-path: polygon(0 100%, 100% 0, 100% 100%);
+  }
+
+  // Decorative ping-pong ball
+  .hero-ball {
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    border: 2px solid rgba($color-gold, 0.12);
+    top: -80px;
+    right: -80px;
+    animation: float 6s ease-in-out infinite;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 20px;
+      border-radius: 50%;
+      border: 1px solid rgba($color-gold, 0.08);
+    }
+  }
+
+  .hero-pill {
+    display: inline-block;
+    background: rgba($color-accent, 0.2);
+    border: 1px solid rgba($color-accent, 0.5);
+    color: $color-accent;
+    font-family: $font-display;
+    font-size: 0.9rem;
+    font-weight: $font-weight-bold;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.35rem 1.1rem;
+    border-radius: $border-radius-pill;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title {
+    @include heading-style(3rem);
+    color: $color-white;
+    margin-bottom: 1rem;
+    max-width: 800px;
+
+    @include respond-to('md') { font-size: 4.5rem; }
+    @include respond-to('lg') { font-size: 5.5rem; }
+
+    .title-accent { color: $color-accent; }
+  }
+
+  .hero-subtitle {
+    color: rgba($color-white, 0.72);
+    font-size: $font-size-lg;
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-cta {
+    @include flex-center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+
+// ——— PAGE HERO (páginas interiores) ———
+.page-hero {
+  @include gradient-bg($color-dark, $color-primary, 150deg);
+  padding: 5rem 0 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0; right: 0;
+    height: 50px;
+    background: $color-light;
+    clip-path: polygon(0 100%, 100% 0, 100% 100%);
+  }
+
+  h1 {
+    @include heading-style(3rem);
+    color: $color-white;
+    @include respond-to('md') { font-size: 4rem; }
+  }
+
+  p.lead {
+    color: rgba($color-white, 0.72);
+    max-width: 560px;
+    margin-inline: auto;
+  }
+}
+
+// ——— SECTION TITLE ———
+.section-title {
+  @include heading-style(2.2rem);
+  color: $color-primary;
+  @include accent-bar($color-accent, 50px, 4px);
+  margin-bottom: $spacing-md;
+
+  @include respond-to('md') { font-size: 2.8rem; }
+}
+
+.section-title--white {
+  @extend .section-title;
+  color: $color-white;
+  &::after { background: $color-gold; }
+}
+
+// ——— FOOTER ———
+.site-footer {
+  background: $color-dark;
+  color: rgba($color-white, 0.70);
+  padding: 3.5rem 0 1.5rem;
+
+  .footer-brand {
+    @include heading-style(1.8rem);
+    color: $color-white;
+    margin-bottom: 0.3rem;
+    span { color: $color-accent; }
+  }
+
+  .footer-tagline {
+    font-size: $font-size-sm;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-contact {
+    @include flex-col(0.7rem);
+
+    a {
+      color: rgba($color-white, 0.80);
+      text-decoration: none;
+      transition: $transition-fast;
+      font-size: $font-size-sm;
+
+      i { color: $color-accent; margin-right: 0.4rem; width: 16px; }
+
+      &:hover { color: $color-gold; }
+    }
+  }
+
+  .footer-divider {
+    border-color: rgba($color-white, 0.1);
+    margin: 2rem 0 1rem;
+  }
+
+  .footer-copy {
+    font-size: $font-size-sm;
+    text-align: center;
+    opacity: 0.55;
+  }
+}

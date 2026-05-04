@@ -1,0 +1,64 @@
+// =============================================================
+// _variables.scss — Clases de Tenis de Mesa · Jose Tapia
+// =============================================================
+
+// ——— Paleta de Colores ———
+$color-primary:   #0d1b3e;   // Azul institucional profundo
+$color-secondary: #1d6fa4;   // Azul medio (links, hover)
+$color-accent:    #e63946;   // Rojo competencia
+$color-gold:      #ffd60a;   // Amarillo/pelota de ping pong
+$color-dark:      #080f20;   // Fondo muy oscuro
+$color-light:     #f0f4f8;   // Fondo claro secciones
+$color-white:     #ffffff;
+$color-gray:      #6c757d;
+$color-gray-light:#dee2e6;
+
+// ——— Tipografía ———
+$font-display: 'Barlow Condensed', sans-serif;   // Headings, hero, nav
+$font-body:    'Nunito', sans-serif;              // Cuerpo de texto
+
+$font-size-base: 1rem;       // 16px
+$font-size-sm:   0.875rem;   // 14px
+$font-size-lg:   1.125rem;   // 18px
+$font-size-xl:   1.5rem;     // 24px
+
+$font-weight-regular: 400;
+$font-weight-semibold: 600;
+$font-weight-bold:    700;
+$font-weight-black:   900;
+
+// ——— Espaciado ———
+$spacing-xs: 0.5rem;
+$spacing-sm: 1rem;
+$spacing-md: 2rem;
+$spacing-lg: 4rem;
+$spacing-xl: 6rem;
+
+// ——— Bordes y Radios ———
+$border-radius-sm:  4px;
+$border-radius-md:  10px;
+$border-radius-lg:  20px;
+$border-radius-pill:50px;
+
+// ——— Sombras ———
+$shadow-soft:   0 4px 20px rgba(0, 0, 0, 0.08);
+$shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.15);
+$shadow-strong: 0 16px 50px rgba(0, 0, 0, 0.30);
+$shadow-accent: 0 8px 25px rgba(230, 57, 70, 0.35);
+
+// ——— Transiciones ———
+$transition-fast:   all 0.2s ease;
+$transition-normal: all 0.35s ease;
+$transition-slow:   all 0.55s ease;
+
+// ——— Breakpoints (Mobile First) ———
+$bp-sm:  576px;
+$bp-md:  768px;
+$bp-lg:  992px;
+$bp-xl:  1200px;
+$bp-xxl: 1400px;
+
+// ——— Z-indexes ———
+$z-nav:     1000;
+$z-overlay: 900;
+$z-card:    10;
